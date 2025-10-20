@@ -2,7 +2,7 @@ import { api } from "@/utils/api";
 
 export const AuthService = {
   Login: async (data: { email: string; password: string }) => {
-    const response = await api.post("/auth/login", data);
+    const response = await api.post("/auth/signin", data);
     return response.data;
   },
   SignUp: async (data: { email: string; name: string; password: string }) => {

@@ -1,6 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
-import { AuthService } from "../../services/authService";
+import { AxiosError } from "axios";
 import { toast } from "sonner";
+
+import { AuthService } from "../../services/authService";
 
 export const useSignupMutation = () => {
   return useMutation({
@@ -9,7 +11,9 @@ export const useSignupMutation = () => {
       toast.success(data.message);
     },
     onError: (data) => {
-      toast.error(data.message);
+      if (data instanceof AxiosError) {
+        return toast.error(data.response?.data.message);
+      }
     },
   });
 };
