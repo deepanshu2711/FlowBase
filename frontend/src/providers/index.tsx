@@ -10,8 +10,8 @@ export const Providers = ({ children }: { children: React.ReactNode }) => {
     <TanstackQueryProvider>
       <SidebarProvider>
         <AppSidebar />
-        <Toaster />
         <SidebarTrigger />
+        <Toaster />
         {children}
       </SidebarProvider>
     </TanstackQueryProvider>

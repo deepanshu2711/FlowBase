@@ -9,6 +9,10 @@ export const useLoginMutation = () => {
     mutationFn: AuthService.Login,
     onSuccess: (data) => {
       toast.success(data.message);
+      if (data?.data?.token) {
+        window.localStorage.setItem("token", data.data.token);
+      }
+      toast.success(data.message || "Logged in successfully!");
     },
     onError: (data) => {
       if (data instanceof AxiosError) {
